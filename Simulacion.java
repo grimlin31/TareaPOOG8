@@ -11,9 +11,16 @@ public class Simulacion {
         System.out.println("Ingrese el path del archivo .csv: ");
         //String path = input.nextLine();
         String path = "Data/Datos.csv";
-        System.out.println(path);
+        String manFilePath = "Data/hombres.csv";
+        String womanFilePath = "Data/mujeres.csv";
+        //System.out.println(path, manFilePath, womanFilePath);
         File file = new File(path);
-
+        Names namesPeople = new Names(manFilePath, womanFilePath, 100);
+        for(String names: namesPeople.names){
+            System.out.println(names);
+        }
+        System.out.println(namesPeople.numMan);
+        System.out.println(namesPeople.numWoman);
         if (file.exists()) {
             try {
                 Scanner fileLine = new Scanner(file);
@@ -43,6 +50,7 @@ public class Simulacion {
                         Comuna comuna = new Comuna(width, height);
                     }
                 }
+                fileLine.close();
             } catch (FileNotFoundException e) {
                 System.out.println("An error occurred.");
                 e.printStackTrace();
